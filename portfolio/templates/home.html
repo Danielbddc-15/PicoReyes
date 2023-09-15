@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+
+<header class="row bg-black">
+    <div class= "col-md-4">
+        <img src="{% static 'portfolio/wireflow.jpg' %}" alt="" width="90" height="90">
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1> Yo soy <strong> Bryan Daniel </h1>
+        <h3>¿Qué es league of legends?</h3>
+        <p> League of Legends (LoL) es un videojuego multijugador en línea desarrollado y publicado por Riot Games. 
+            Se lanzó inicialmente en octubre de 2009 y se ha convertido en uno de los juegos en línea más populares y exitosos del mundo. 
+            League of Legends es un juego de estrategia en tiempo real (RTS) que cae dentro del género de los videojuegos MOBA (Acrónimo de "Multiplayer Online Battle Arena").
+
+            En League of Legends, los jugadores asumen el papel de "invocadores" y controlan a un campeón con habilidades únicas. 
+            El objetivo principal del juego es destruir el nexo enemigo, una estructura ubicada en la base del equipo rival. 
+            Para lograrlo, los jugadores deben trabajar en equipo, derrotar a los campeones enemigos, eliminar tropas enemigas y destruir torres defensivas.</p>
+        <a class="btn btn-primary btn-lg rouned-0 my-3" href="{% static 'portfolio/CV.pdf' %}" target="_blank">Download CV</a>
+    </div>
+
+</header>
+
+<div class="row my-4 text-center bg-black">
+
+  <h3>BIENVENIDO</h3>
+  <p> MIS PROYECTOS</p>
+  {% for project in projects %}
+  <div class="col-md-4 p-4"> 
+     <div class="card bg-light card-project">
+          <img src="{{project.image.url}}" alt="{project.title}" class="card-img-top">
+          <div class="card-body">
+                <h2> {{project.title}} </h2>
+                <p>{{project.description}}</p>
+
+                <br>
+                {% if project.url %}
+                <a href="{{project.url}}" class="btn btn-dark rounde-0 btn-sm" target="_blank">{{project.url}}</a>
+                {% endif %}
+          </div>
+     </div>
+  </div>      
+  {% endfor %}
+  {% endblock %}
+</div>
